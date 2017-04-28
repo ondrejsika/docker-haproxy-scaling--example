@@ -1,0 +1,15 @@
+version: "2"
+services:
+  haproxy:
+    image: eeacms/haproxy
+    depends_on:
+    - webapp
+    ports:
+    - "5000:5000"
+    - "1936:1936"
+    environment:
+      BACKENDS: "webapp"
+      DNS_ENABLED: "true"
+
+  webapp:
+    image: eeacms/hello
